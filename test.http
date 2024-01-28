@@ -1,96 +1,101 @@
+# Create User
 POST http://localhost:3000/api/users
 Content-Type: application/json
 Accept: application/json
 
 {
-  "username" : "aldi",
-  "password" : "password",
-  "name" : "aldi"
+  "username" : "Satria",
+  "password" : "admin",
+  "name" : "Muhamad Satria"
 }
 
 ###
 
+# Login User
 POST http://localhost:3000/api/users/login
 Content-Type: application/json
 Accept: application/json
 
 {
-  "username" : "aldi",
-  "password" : "password"
+  "username" : "Satria",
+  "password" : "admin"
 }
 
 ###
 
+# Get Current User
 GET http://localhost:3000/api/users/current
 Content-Type: application/json
 Accept: application/json
-Authorization: 3714cab5-a1ee-4161-a8e5-855f9ebf3704
+Authorization: d56693e6-85b4-4654-a905-9361ef5d34c0
 
 ###
 
+# Update Current User
 PATCH http://localhost:3000/api/users/current
 Content-Type: application/json
 Accept: application/json
-Authorization: 3714cab5-a1ee-4161-a8e5-855f9ebf3704
+Authorization: d56693e6-85b4-4654-a905-9361ef5d34c0
 
 {
-  "name" : "satria"
+  "name" : "Muhamad Satria new"
 }
 
 ###
 
+# Logout User
 DELETE http://localhost:3000/api/users/logout
 Content-Type: application/json
 Accept: application/json
-Authorization: fc1bcbdc-22c3-4557-95bf-d65bf15f032d
+Authorization: d56693e6-85b4-4654-a905-9361ef5d34c0
 
 ###
+
+# Create Product
 POST http://localhost:3000/api/products
 Content-Type: application/json
 Accept: application/json
-Authorization: cfdb8538-d2d8-4599-b2fe-bc2404a84ac1
+Authorization: d56693e6-85b4-4654-a905-9361ef5d34c0
+
 {
-  "namaProduct": "Laptop",
-  "deskripsi": "Powerful laptop for professional use",
-  "harga": 1200.50,
-  "stok": 50,
-  "warna": "Silver",
-  "categori": "Electronics"
+  "namaProduct" : "Laptop",
+  "deskripsi" : "baru",
+  "harga" : 50000,
+  "stok" : 10,
+  "warna" : "Silver",
+  "categori" : "Elektronik"
 }
 
-###
-
-GET http://localhost:3000/api/products
-Content-Type: application/json
-Accept: application/json
-Authorization: 3714cab5-a1ee-4161-a8e5-855f9ebf3704
 
 ###
 
-GET http://localhost:3000/api/products/1
+# Get Product by ID
+GET http://localhost:3000/api/products/15
 Content-Type: application/json
 Accept: application/json
-Authorization: 3714cab5-a1ee-4161-a8e5-855f9ebf3704
+Authorization: d56693e6-85b4-4654-a905-9361ef5d34c0
 
 ###
 
-PUT http://localhost:3000/api/products/1
+# Update Product by ID
+PUT http://localhost:3000/api/products/15
 Content-Type: application/json
 Accept: application/json
-Authorization: 3714cab5-a1ee-4161-a8e5-855f9ebf3704
+Authorization: d56693e6-85b4-4654-a905-9361ef5d34c0
 
 {
   "namaProduct": "Updated Laptop",
-  "deskripsi": "Powerful laptop for professional use",
-  "harga": 1300.75,
-  "stok": 45,
+  "deskripsi": "Updated baru",
+  "harga": 1800,
+  "stok": 8,
   "warna": "Black",
-  "categori": "Electronics"
+  "categori": "Elektronik"
 }
 
 ###
 
-DELETE http://localhost:3000/api/products/1
+# Delete Product by ID
+DELETE http://localhost:3000/api/products/15
 Content-Type: application/json
 Accept: application/json
-Authorization: 3714cab5-a1ee-4161-a8e5-855f9ebf3704
+Authorization: d56693e6-85b4-4654-a905-9361ef5d34c0

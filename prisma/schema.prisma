@@ -15,18 +15,21 @@ model User {
   password String    @db.VarChar(100)
   name     String    @db.VarChar(100)
   token    String?   @db.VarChar(100)
+  products Product[]
 
   @@map("users")
 }
 
-model Produk {
-  id          Int       @id @default(autoincrement())
-  namaProduct String    @db.VarChar(100)
-  deskripsi   String    @db.VarChar(255)
-  harga       Float
-  stok        Int
-  warna       String    @db.VarChar(50)
-  categori    String    @db.VarChar(50)
+model Product {
+  id        Int      @id @default(autoincrement())
+  namaProduct  String
+  deskripsi  String
+  harga     Int
+  stok      Int
+  warna     String
+  categori  String
+  username   String    @db.VarChar(100)
+  user       User      @relation(fields: [username], references: [username])
 
-  @@map("produk")
+  @@map("products")
 }

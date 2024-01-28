@@ -1,15 +1,15 @@
 // product-service.js
 import { validate } from "../validation/validation.js";
 import {
-    createProductValidation,
-    getProductValidation,
-    updateProductValidation
+    createproductValidation,
+    getproductValidation,
+    updateproductValidation
 } from "../validation/product-validation.js";
 import { prismaClient } from "../application/database.js";
 import { ResponseError } from "../error/response-error.js";
 
-const createProduct = async (user, request) => {
-    const product = validate(createProductValidation, request);
+const create = async (user, request) => {
+    const product = validate(createproductValidation, request);
     product.username = user.username;
 
     return prismaClient.product.create({
@@ -26,8 +26,8 @@ const createProduct = async (user, request) => {
     });
 }
 
-const getProduct = async (user, productId) => {
-    productId = validate(getProductValidation, productId);
+const get = async (user, productId) => {
+    productId = validate(getproductValidation, productId);
 
     const product = await prismaClient.product.findFirst({
         where: {
@@ -46,29 +46,29 @@ const getProduct = async (user, productId) => {
     });
 
     if (!product) {
-        throw new ResponseError(404, "Product is not found");
+        throw new ResponseError(404, "product is not found");
     }
 
     return product;
 }
 
-const updateProduct = async (user, productId, request) => {
-    const product = validate(updateProductValidation, request);
+const update = async (user, request) => {
+    const product = validate(updateproductValidation, request);
 
-    const totalProductInDatabase = await prismaClient.product.count({
+    const totalproductInDatabase = await prismaClient.product.count({
         where: {
             username: user.username,
-            id: productId
+            id: product.id
         }
     });
 
-    if (totalProductInDatabase !== 1) {
-        throw new ResponseError(404, "Product is not found");
+    if (totalproductInDatabase !== 1) {
+        throw new ResponseError(404, "product is not found");
     }
 
     return prismaClient.product.update({
         where: {
-            id: productId
+            id: product.id
         },
         data: {
             namaProduct: product.namaProduct,
@@ -87,11 +87,11 @@ const updateProduct = async (user, productId, request) => {
             warna: true,
             categori: true
         }
-    });
+    })
 }
 
-const deleteProduct = async (user, productId) => {
-    productId = validate(getProductValidation, productId);
+const remove = async (user, productId) => {
+    productId = validate(getproductValidation, productId);
 
     const totalInDatabase = await prismaClient.product.count({
         where: {
@@ -101,7 +101,7 @@ const deleteProduct = async (user, productId) => {
     });
 
     if (totalInDatabase !== 1) {
-        throw new ResponseError(404, "Product is not found");
+        throw new ResponseError(404, "product is not found");
     }
 
     return prismaClient.product.delete({
@@ -112,8 +112,8 @@ const deleteProduct = async (user, productId) => {
 }
 
 export default {
-    createProduct,
-    getProduct,
-    updateProduct,
-    deleteProduct
+    create,
+    get,
+    update,
+    remove
 }

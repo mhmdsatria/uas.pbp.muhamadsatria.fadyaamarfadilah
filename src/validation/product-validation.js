@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-const createProductValidation = Joi.object({
+const createproductValidation = Joi.object({
     namaProduct: Joi.string().max(100).required(),
     deskripsi: Joi.string().max(255).optional(),
     harga: Joi.number().required(),
@@ -9,9 +9,9 @@ const createProductValidation = Joi.object({
     categori: Joi.string().max(50).optional()
 });
 
-const getProductValidation = Joi.number().positive().required();
+const getproductValidation = Joi.number().positive().required();
 
-const updateProductValidation = Joi.object({
+const updateproductValidation = Joi.object({
     id: Joi.number().positive().required(),
     namaProduct: Joi.string().max(100).required(),
     deskripsi: Joi.string().max(255).optional(),
@@ -22,7 +22,7 @@ const updateProductValidation = Joi.object({
 });
 
 export {
-    createProductValidation,
-    getProductValidation,
-    updateProductValidation
-};
+    createproductValidation,
+    getproductValidation,
+    updateproductValidation
+}
