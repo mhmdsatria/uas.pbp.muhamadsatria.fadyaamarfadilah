@@ -1,0 +1,96 @@
+POST http://localhost:3000/api/users
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username" : "aldi",
+  "password" : "password",
+  "name" : "aldi"
+}
+
+###
+
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username" : "aldi",
+  "password" : "password"
+}
+
+###
+
+GET http://localhost:3000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: 3714cab5-a1ee-4161-a8e5-855f9ebf3704
+
+###
+
+PATCH http://localhost:3000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: 3714cab5-a1ee-4161-a8e5-855f9ebf3704
+
+{
+  "name" : "satria"
+}
+
+###
+
+DELETE http://localhost:3000/api/users/logout
+Content-Type: application/json
+Accept: application/json
+Authorization: fc1bcbdc-22c3-4557-95bf-d65bf15f032d
+
+###
+POST http://localhost:3000/api/products
+Content-Type: application/json
+Accept: application/json
+Authorization: cfdb8538-d2d8-4599-b2fe-bc2404a84ac1
+{
+  "namaProduct": "Laptop",
+  "deskripsi": "Powerful laptop for professional use",
+  "harga": 1200.50,
+  "stok": 50,
+  "warna": "Silver",
+  "categori": "Electronics"
+}
+
+###
+
+GET http://localhost:3000/api/products
+Content-Type: application/json
+Accept: application/json
+Authorization: 3714cab5-a1ee-4161-a8e5-855f9ebf3704
+
+###
+
+GET http://localhost:3000/api/products/1
+Content-Type: application/json
+Accept: application/json
+Authorization: 3714cab5-a1ee-4161-a8e5-855f9ebf3704
+
+###
+
+PUT http://localhost:3000/api/products/1
+Content-Type: application/json
+Accept: application/json
+Authorization: 3714cab5-a1ee-4161-a8e5-855f9ebf3704
+
+{
+  "namaProduct": "Updated Laptop",
+  "deskripsi": "Powerful laptop for professional use",
+  "harga": 1300.75,
+  "stok": 45,
+  "warna": "Black",
+  "categori": "Electronics"
+}
+
+###
+
+DELETE http://localhost:3000/api/products/1
+Content-Type: application/json
+Accept: application/json
+Authorization: 3714cab5-a1ee-4161-a8e5-855f9ebf3704
